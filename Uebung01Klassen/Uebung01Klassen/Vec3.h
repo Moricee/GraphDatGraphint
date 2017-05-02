@@ -32,6 +32,8 @@ public:
 
 	Vec3 crossProduct(const Vec3 &vec2)const;   // Kreuzprodukt berechnen
 
+	void randomizer();
+
 	float getValue(const int) const;   // Wert des Vektors an der Stelle des Index zurückgeben
 
 	void changeValue(int, float);   // Wert des Vektors verändern

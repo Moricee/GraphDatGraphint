@@ -1,7 +1,7 @@
 #include "Vec3.h"
 #include <math.h>
 #include <iostream>
-
+#include <random>
 	Vec3::Vec3(void)	/* Erzeuge eine Instanz eines Objektes vom Typ Vec3
 						   und initialisiere es mit 0 für alle Werte des Vektors. */
 	{
@@ -120,6 +120,18 @@
 		crossProduct.value[2] = (value[0] * vec2.value[1]) - (vec2.value[0] * value[1]);
 		
 		*/
+	}
+
+
+
+	void Vec3::randomizer() {
+
+		std::random_device rdev;
+		std::default_random_engine re(rdev());
+		std::uniform_real_distribution<float> distribution(-100, 100);
+		for (int i = 0; i < VEC_DIM; i++) {
+				value[i] = distribution(re);
+		}
 	}
 
 

@@ -11,14 +11,18 @@ int main(int argc, char *argv[])
 		mat1.changeValue(0, 0, 6);
 		Mat3 mat2(4, 5, 4, 4, 2, 5, 9, 4, 3);
 		Vec3 uni(1, 0, 0);
-
-
+		Vec3 randomVec;
+		Mat3 randomMat;
+		randomMat.randomizer();
+		randomVec.randomizer();
 		std::cout << "Verwendete Vektoren und Matrizen" << std::endl << std::endl;
 
 		vec1.ausgabe();
 		vec2.ausgabe();
 		mat1.ausgabe();
 		mat2.ausgabe();
+		randomMat.ausgabe();
+		randomVec.ausgabe();
 		std::cout << std::endl;
 
 		std::cout << "Laenge des Vektors vec2" << std::endl << std::endl;

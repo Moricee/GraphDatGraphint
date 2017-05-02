@@ -22,14 +22,6 @@ Mat3::Mat3(float a, float b, float c, float d, float e, float f, float g, float 
 
 
 
-Mat3::Mat3(char) {
-	std::default_random_engine generator;
-	std::uniform_real_distribution<float> distribution(1, 6);
-	float dice_roll = distribution(generator);
-}
-
-
-
 Mat3::Mat3(const Mat3 &mat)   // Erstelle eine Kopie der übergeben Matrix
 {
 	for (int i = 0; i < MAT_DIM; i++) {
@@ -180,6 +172,20 @@ float Mat3::determinant3x3() {   // Rechne die Determinante einer 3x3 Matrix aus
 		   - value[0][0] * value[1][2] * value[2][1];
 
 	return determ;
+}
+
+
+
+void Mat3::randomizer() {
+
+	std::random_device rdev;
+	std::default_random_engine re(rdev());
+	std::uniform_real_distribution<float> distribution(-100, 100);
+	for (int i = 0; i < MAT_DIM; i++) {
+		for (int j = 0; j < MAT_DIM; j++) {
+			value[i][j] = distribution(re);
+		}
+	}
 }
 
 

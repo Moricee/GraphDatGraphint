@@ -32,10 +32,12 @@ public:
 
 	Mat3 multiplyMat(const Mat3 &mat) const;	// Multiplizieren von zwei Matrizen miteinander
 
+	void randomizer();
+
 	Vec3 multiplyVec(Vec3 &vec);   // Multiplizieren von einer Matrix mit einem Vektor
-	/*
-	Mat3 inverse(Mat3 &mat)const;   // Inverse der Matrix bestimmen falls möglich
-	*/
+	
+	// Mat3 invert()const;   // Inverse der Matrix bestimmen falls möglich
+
 	float determinant3x3();   // Berechnen der Determinanten einer 3x3 Matrix
 
 	float getValue(int, int);	// Wert aus Matrix an einer Stelle zurückgeben
