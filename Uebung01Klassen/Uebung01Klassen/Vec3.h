@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _VEC3_H_
 #define _VEC3_H_
-#define VEC_DIM 3
+#define VEC_DIM 4
 
 class Vec3
 {
@@ -13,7 +13,7 @@ public:
 
 	Vec3(float x, float y, float z);   // Konstruktor, der den Vektor mit den übergebenen Werten (x, y, z) initialisiert.
 
-	Vec3(Vec3 &vec);   // Kopie des übergebenen Vektors erstellen
+	Vec3(const Vec3 &vec);   // Kopie des übergebenen Vektors erstellen
 
 	~Vec3();
 
@@ -32,9 +32,13 @@ public:
 
 	Vec3 crossProduct(const Vec3 &vec2)const;   // Kreuzprodukt berechnen
 
-	void randomizer();
+	void randomizer();   // Vektor mit zufälligen Zahlen füllen
 
 	float getValue(const int) const;   // Wert des Vektors an der Stelle des Index zurückgeben
+
+	const float& Vec3::operator[](int i) const;	  // Überladener [] Operator für leichteren Vektorzugriff
+
+	float& Vec3::operator[](int i);
 
 	void changeValue(int, float);   // Wert des Vektors verändern
 

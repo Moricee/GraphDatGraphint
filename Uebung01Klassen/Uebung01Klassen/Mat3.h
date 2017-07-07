@@ -1,7 +1,7 @@
 #pragma once
 #ifndef _MAT3_H_
 #define _MAT3_H_
-#define MAT_DIM 3
+#define MAT_DIM 4
 #include "Vec3.h"
 
 class Mat3
@@ -15,8 +15,6 @@ public:
 	Mat3();	  // Standardkonstruktor
 
 	Mat3(float, float, float,	float, float, float,	float, float, float);	// Konstruktor mit neun übergebbaren Werten
-
-	Mat3(char);
 
 	Mat3(const Mat3 &mat);   // Konstruktor zum kopieren
 
@@ -32,13 +30,25 @@ public:
 
 	Mat3 multiplyMat(const Mat3 &mat) const;	// Multiplizieren von zwei Matrizen miteinander
 
-	void randomizer();
+	void randomizer();	//Matrix mit zufälligen Werten füllen
 
 	Vec3 multiplyVec(Vec3 &vec);   // Multiplizieren von einer Matrix mit einem Vektor
 	
 	// Mat3 invert()const;   // Inverse der Matrix bestimmen falls möglich
 
 	float determinant3x3();   // Berechnen der Determinanten einer 3x3 Matrix
+
+	void setIdentity(void);
+
+	void setScale(const Vec3 &s);
+
+	void setTranslate(const Vec3 &t);
+
+	void setRotateX(float);
+
+	void setRotateY(float);
+
+	void setRotateZ(float);
 
 	float getValue(int, int);	// Wert aus Matrix an einer Stelle zurückgeben
 

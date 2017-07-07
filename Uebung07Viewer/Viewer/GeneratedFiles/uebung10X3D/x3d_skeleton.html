@@ -1,0 +1,101 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+    <title>X3D</title>
+    <script type="text/javascript" 
+            src="http://x3dom.org/download/dev/x3dom.js">
+    </script>
+    <link rel="stylesheet" type="text/css" 
+          href="http://x3dom.org/download/dev/x3dom.css">
+</head>
+<body>
+<X3D width="800" height="500">
+    <Scene>
+        <Viewpoint position="0 5.2 11.3" orientation="1.0 0.0 0.0 -0.33">
+        </Viewpoint> <!-- Camera -->
+        <!-- Coordinate system with grid -->
+        <Shape DEF="CoordSys">
+            <Appearance sortKey="1">
+                <LineProperties linewidthScaleFactor="2">
+                </LineProperties> <!-- works only on *nix -->
+            </Appearance>
+            <LineSet>
+                <Coordinate point="-8 0.0 0.0, 14 0.0 0.0, 0.0 -6 0.0, 0.0 7 0.0, 0.0 0.0 -6, 0.0 0.0 7">
+                </Coordinate>
+                <Color color="1 0 0, 1 0 0, 0 1 0, 0 1 0, 0 0 1, 0 0 1">
+                </Color>
+            </LineSet>
+        </Shape>
+        <Group render="FALSE">
+            <!-- make visible if needed -->
+            <Shape DEF="Grid" isPickable="false">
+                <Appearance sortKey="-1">
+                    <Material emissiveColor='0.5 0.5 0.5'>
+                    </Material>
+                </Appearance>
+                <Plane solid="false" size='20 10'
+                       primType='LINES' subdivision='40 20'>
+                </Plane>
+            </Shape>
+        </Group>
+        <Shape>
+            <Appearance>
+                <Material diffuseColor="1.0, 0.5 0.3"></Material>
+            </Appearance>
+            <IndexedFaceSet convex="false" coordIndex="0 1 2 3 4 5 6 -1">
+                <Coordinate point="1 4.5 0, 2.5 1 0, 4.5 3 0, 5 1.5 0, 6 3.5 0, 4 5 0, 2.5 3.5 0"></Coordinate>
+            </IndexedFaceSet>
+        </Shape>
+        <Shape>
+            <!-- P0       P1       P2       P3       P4       P5     P6        -->
+            <IndexedTriangleSet index="2 3 4, 2 4 5, 2 5 6, 0 1 2, 0 2 3" convex="false">
+                <!-- 1 4.5 0, 2.5 1 0, 4.5 3 0, 5 1.5 0, 6 3.5 0, 4 5 0, 2.5 3.5 0 -->
+                <!--  P2       P3       P4         P2       P4       P5       P2       P5     P6           P6         P0       P1         P6         P1       P2-->
+                <Coordinate point="1 4.5 0, 2.5 1 0, 4.5 3 0, 5 1.5 0, 6 3.5 0, 4 5 0, 2.5 3.5 0"></Coordinate>
+                <Color color='0 0.8 0 0 1 1 1 0 0 1 0.5 0 0.8 0 1 1 1 0 0.6 0.3 0.1' />
+            </IndexedTriangleSet>
+        </Shape>
+
+        <Shape>
+            <Appearance>
+                <Material diffuseColor="0.5, 0.0 0.0" specularColor='1.0 0.2 0.0' shininess='0.8'></Material>
+            </Appearance>                         <!-- unten       oben        links       rechts      vorne       hinten -->
+            <IndexedFaceSet convex="false" coordIndex="3 2 1 0 -1  4 5 6 7 -1  0 4 7 3 -1  1 2 6 5 -1  0 1 5 4 -1  2 3 7 6 -1" normalIndex="0 -1  0, 0 -1  0, 0 -1  0, 0 -1 0,  0 1 0, 0 1 0, 0 1 0, 0 1 0,  -1 0 0, -1 0 0, -1 0 0, -1 0 0,  1 0 0, 1 0 0, 1 0 0, 1 0 0,  0 0 1, 0 0 1, 0 0 1, 0 0 1,  0 0 -1, 0 0 -1, 0 0 -1, 0 0 -1">
+                <Coordinate point="-1 -1  1,   1 -1  1,   1 -1 -1,   -1 -1 -1,   -1  1  1,   1  1  1,   1  1 -1,   -1  1 -1">
+                               <!-- 0 uvl      1 uvr      2 uhr       3 uhl       4 ovl      5 ovr      6 ohr       7 ohl                                       -->  
+                </Coordinate>
+            </IndexedFaceSet>
+        </Shape>
+       
+        <transform translation="1 2 3">
+            <Shape>
+                <Appearance>
+                    <Material ambientIntensity='0.2' diffuseColor='0 0 1'
+                              specularColor='.0 .5 .5' shininess='0.8'>
+                    </Material>
+                </Appearance>
+                <Sphere radius='1.0'></Sphere>
+            </Shape>
+        </transform>
+
+            
+        <PointLight color ="1 1 1" intensity ="0.7" location ="-10 10 10"></PointLight>
+
+
+
+        <Transform rotation="1 0 0 -1.570796" render="TRUE">
+            <Shape USE="Grid"></Shape>
+        </Transform>
+        <Transform rotation="0 1 0 -1.570796" render="FALSE">
+            <Shape USE="Grid"></Shape>
+        </Transform>
+
+        <!-- Uebungsaufgabe(n) -->
+        <Transform id='myTrafo'>
+            <!-- TODO -->
+        </Transform>
+    </Scene>
+</X3D>
+</body>
+</html>

@@ -1,6 +1,9 @@
 #include "Mat3.h"
 #include <iostream>
 #include <random>
+#include <math.h>
+
+#define PI 3.1415926
 
 Mat3::Mat3(void)   // Standardkonstruktor
 {
@@ -15,9 +18,10 @@ Mat3::Mat3(void)   // Standardkonstruktor
 
 Mat3::Mat3(float a, float b, float c, float d, float e, float f, float g, float h, float i)   // Initialisiere eine Matrix mit den neun übergebenen Werten
 {
-	value[0][0] = a;	value[0][1] = d;	value[0][2] = g;
-	value[1][0] = b;	value[1][1] = e;	value[1][2] = h;
-	value[2][0] = c;	value[2][1] = f;	value[2][2] = i;
+	value[0][0] = a;	value[0][1] = d;	value[0][2] = g;	value[0][3] = 0;
+	value[1][0] = b;	value[1][1] = e;	value[1][2] = h;	value[1][3] = 0;
+	value[2][0] = c;	value[2][1] = f;	value[2][2] = i;	value[2][3] = 0;
+	value[3][0] = 0;	value[3][1] = 0;	value[3][2] = 0;	value[3][3] = 1;
 }
 
 
@@ -118,10 +122,8 @@ Mat3 Mat3::multiplyMat(const Mat3 &mat) const
 	for (int z = 0; z < MAT_DIM; z++) {		
 		for (int i = 0; i < MAT_DIM; i++) {	
 			for (int j = 0; j < MAT_DIM; j++) {			// 3^3 Berechnungen müssen gemacht werden
-				help += value[z][j] * mat.value[j][i];	// Speichere das Ergebnis der Multiplikationen in help.
+				multiplied.value[z][i] += value[z][j] * mat.value[j][i];	// Speichere das Ergebnis der Multiplikationen in help.
 			}											// 3^2 Werte müssen gespeichert werden
-			multiplied.value[z][i] = help;			// Speichere den Wert von help in die neue Matrix.
-			help = 0.f;
 		}
 	}
 
@@ -176,7 +178,7 @@ float Mat3::determinant3x3() {   // Rechne die Determinante einer 3x3 Matrix aus
 
 
 
-void Mat3::randomizer() {
+void Mat3::randomizer() {   // Befülle die Matrix mit zufälligen float Werten
 
 	std::random_device rdev;
 	std::default_random_engine re(rdev());
@@ -186,6 +188,66 @@ void Mat3::randomizer() {
 			value[i][j] = distribution(re);
 		}
 	}
+	value[0][3] = 0;	value[1][3] = 0;	value[2][3] = 0;	value[3][3] = 1;	value[3][2] = 0;	value[3][1] = 0;	value[3][0] = 0;
+}
+
+
+
+void Mat3::setIdentity(void)					// sets Matrix to identity matrix
+{
+	for (int i = 0; i < MAT_DIM; i++) {
+		for (int j = 0; j < MAT_DIM; j++) {
+			if (i == j) {
+				value[i][j] = 1;
+			}
+			else {
+				value[i][j] = 0;
+			}
+		}
+	}
+}
+
+
+
+void Mat3::setScale(const Vec3 &s)				// sets scaling matrix
+{
+	for (int i = 0; i < MAT_DIM - 1; i++) {
+		value[i][i] = s[i];						// overloaded operator []
+	}
+}
+
+
+
+void Mat3::setTranslate(const Vec3 &t)			// sets translation matrix
+{
+	for (int i = 0; i < MAT_DIM - 1; i++) {
+		value[i][MAT_DIM - 1] = t[i];			// overloaded operator []
+	}
+	
+}
+
+
+
+void Mat3::setRotateX(float angle)				// sets rotation matrix around x-axis
+{
+	value[1][1] = cos((angle * PI) / 180);	value[1][2] = -(sin((angle * PI) / 180));
+	value[2][1] = sin((angle * PI) / 180);	value[2][2] = value[1][1];		// value[2][2] is cos(angle) too
+}
+
+
+
+void Mat3::setRotateY(float angle)				// sets rotation matrix around y-axis
+{
+	value[0][0] = cos((angle * PI) / 180);	value[0][2] = sin((angle * PI) / 180);
+	value[2][0] = -(sin((angle * PI) / 180));	value[2][2] = value[0][0];		// value[2][2] is cos(angle) too
+}
+
+
+
+void Mat3::setRotateZ(float angle)				// sets rotation matrix around z-axis
+{
+	value[0][0] = cos((angle * PI) / 180);	value[0][1] = -(sin((angle * PI) / 180));
+	value[1][0] = sin((angle * PI) / 180);	value[1][1] = value[0][0];		// value[2][2] is cos(angle) too
 }
 
 
@@ -263,6 +325,20 @@ float Mat3::getValue(int i, int j) {	// Gib den Wert der Matrix an der Stelle [i
 		return 0;
 	}
 }
+
+
+
+//float& mat3::operator[](int i)
+//{
+//	return value[i];
+//}
+//
+//
+//
+//const float& mat3::operator[](int i, int j) const
+//{
+//	return value[i][j];
+//}
 
 
 

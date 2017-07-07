@@ -165,6 +165,10 @@ int main(int argc, char *argv[])
 		std::cout << std::endl;
 
 
+		Vec3 normale(1, 1, 1);
+		Vec3 normalen = normale.normalise();
+		normalen.ausgabe();
+
 		getchar();
     return 0;
 }

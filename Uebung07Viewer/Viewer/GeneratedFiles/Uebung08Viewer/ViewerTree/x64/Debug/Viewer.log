@@ -1,0 +1,5 @@
+﻿  Generate moc_predefs.h
+  renderview.cpp
+renderview.cpp(97): warning C4305: "Argument": Verkürzung von "double" in "float"
+  Viewer.vcxproj -> D:\studium4\GraphDatGraphint\Uebung08Viewer\ViewerTree\debug\Viewer.exe
+  Viewer.vcxproj -> debug\Viewer.pdb (Full PDB)

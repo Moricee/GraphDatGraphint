@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\morice\desktop\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\main.cpp(18): warning C4305: "Argument": Verkürzung von "double" in "float"
+  uebung02Klassen.vcxproj -> C:\Users\Morice\Desktop\studium4\GraphDatGraphint\uebung02Klassen\Debug\uebung02Klassen.exe
+  uebung02Klassen.vcxproj -> C:\Users\Morice\Desktop\studium4\GraphDatGraphint\uebung02Klassen\Debug\uebung02Klassen.pdb (Partial PDB)

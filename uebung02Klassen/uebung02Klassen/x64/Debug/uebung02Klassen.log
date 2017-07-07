@@ -1,0 +1,12 @@
+﻿  Vec3.cpp
+  Mat3.cpp
+  main.cpp
+  ColorRGBA.cpp
+e:\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\colorrgba.cpp(52): warning C4244: "=": Konvertierung von "float" in "unsigned char", möglicher Datenverlust
+e:\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\colorrgba.cpp(53): warning C4244: "=": Konvertierung von "float" in "unsigned char", möglicher Datenverlust
+e:\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\colorrgba.cpp(54): warning C4244: "=": Konvertierung von "float" in "unsigned char", möglicher Datenverlust
+e:\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\colorrgba.cpp(91): warning C4244: "=": Konvertierung von "float" in "unsigned char", möglicher Datenverlust
+e:\studium4\graphdatgraphint\uebung02klassen\uebung02klassen\colorrgba.cpp(399): warning C4244: "=": Konvertierung von "float" in "unsigned char", möglicher Datenverlust
+  Code wird generiert...
+  uebung02Klassen.vcxproj -> E:\studium4\GraphDatGraphint\uebung02Klassen\x64\Debug\uebung02Klassen.exe
+  uebung02Klassen.vcxproj -> E:\studium4\GraphDatGraphint\uebung02Klassen\x64\Debug\uebung02Klassen.pdb (Partial PDB)
